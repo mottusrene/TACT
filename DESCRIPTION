@@ -1,6 +1,6 @@
 Package: TACT
 Type: Package
-Title: Trisects and cross-tablulates two simulated continuous variables with a given correlation and distribution.
+Title: Trisects and cross-tablulates two simulated continuous variables with a given correlation and distribution
 Version: 0.1.0
 Author: René Mõttus
 Maintainer: René Mõttus <rene.mottus@ed.ac.uk>
