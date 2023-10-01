@@ -1,11 +1,13 @@
+require(dplyr)
+
 TACT <- function(r=NULL, x=NULL, y=NULL, distribution = c("normal", "uniform", "skewed"), n = 10^6,
                  cutoffsx = c(1/3,2/3), cutoffsy = c(1/3,2/3),
                  plot=TRUE, n.plotted = 10^3, Main = "",
                  Xlab = "X", Ylab = "Y",
-                 Char=c(-0x263A,-0x2639,-0x2639,-0x2639,-0x263A,-0x2639,-0x2639,-0x2639,-0x263A),
-                 Col=c("olivedrab2","orangered3","orangered3","orangered3","olivedrab2",
-                       "orangered3","orangered3","orangered3","olivedrab2"),
-                 Cex=c(1.2,0.9,0.9,0.9,1.2,0.9,0.9,0.9,1.2),
+                 Char=c(-0x2639,-0x2639,-0x263A,-0x2639,-0x263A,-0x2639,-0x263A,-0x2639,-0x2639),
+                 Col=c("orangered3","orangered3","olivedrab2","orangered3","olivedrab2",
+                       "orangered3","olivedrab2","orangered3","orangered3"),
+                 Cex=c(0.9,0.9,1.2,0.9,1.2,0.9,1.2,0.9,0.9),
                  plot.percents = c(TRUE,TRUE,TRUE,TRUE,TRUE, TRUE,TRUE,TRUE,TRUE))
 
 {
@@ -74,6 +76,11 @@ TACT <- function(r=NULL, x=NULL, y=NULL, distribution = c("normal", "uniform", "
     } else {
       color = as.factor(apply(tabs, 1, paste, collapse=""))
     }
+    color <- recode(color, 
+                    "LowHigh"=9,"LowMedium"=6,"LowLow"=3,
+                    "MediumHigh"=8,"MediumMedium"=5,"MediumLow"=2,
+                    "HighHigh"=7,"HighMedium"=4,"HighLow"=1
+                   )
     plot(x,y, col="white",xaxt="n", yaxt="n",
          ylim = c(min(yorig), max(yorig)), xlim = c(min(xorig), max(xorig)),
          xlab=Xlab, ylab=Ylab)
